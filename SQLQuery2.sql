@@ -93,6 +93,8 @@ FOREIGN KEY (ID_Employees) REFERENCES Employees(ID_Employees )
 );
 
 
+
+
 INSERT INTO Authors (Name_Authors) VALUES
 ('Author1'),
 ('Author2'),
@@ -174,6 +176,11 @@ select Name_Book,Name_Users
 from Books a
 INNER JOIN Users_Books b
 ON  a.ID_Book=b.ID_Book
+
+
+
+
+
 INNER JOIN Users c
 ON c.ID_Users=b.ID_Users
 
@@ -183,14 +190,14 @@ select Name_Book,Name_Users
 from Books a
 LEFT JOIN Users_Books b
 ON  a.ID_Book=b.ID_Book
-INNER JOIN Users c
+LEFT JOIN Users c
 ON c.ID_Users=b.ID_Users
 
 
 
 select Name_Book,Name_Users
 from Books a
-INNER JOIN Users_Books b
+RIGHT JOIN Users_Books b
 ON  a.ID_Book=b.ID_Book
 RIGHT JOIN Users c
 ON c.ID_Users=b.ID_Users
@@ -198,9 +205,13 @@ ON c.ID_Users=b.ID_Users
 
 select Name_Book,Name_Users
 from Books a
-INNER JOIN Users_Books b
+FULL JOIN Users_Books b
 ON  a.ID_Book=b.ID_Book
-INNER JOIN Users c
+FULL JOIN Users c
 ON c.ID_Users=b.ID_Users
 
 
+select Name_Employees,Name_Users 
+from Employees a INNER JOIN Users_Employees b 
+ON a.ID_Employees=b.ID_Employees INNER JOIN Users c
+ON b.ID_Users=c.ID_Users;
